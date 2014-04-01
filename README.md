@@ -1,6 +1,7 @@
-# Becklyn Bootstrap Bundle
+BecklynBootstrapBundle
+======================
 
-This bundle provides the assets of bootstrap, including basic components for usage in administration areas.
+Provides a basic integration of Bootstrap v3 in Symfony2.
 
 Bundled components:
 
