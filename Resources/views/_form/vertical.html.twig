@@ -1,0 +1,102 @@
+{% block form_row %}
+    {% spaceless %}
+        {% if "checkbox" in block_prefixes %}
+            {{ block("checkbox_form_row") }}
+        {% else %}
+            {{ block("regular_form_row") }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block regular_form_row %}
+    {% spaceless %}
+        <div class="form-group{% if errors is not empty %} has-error{% endif %}">
+            {{ form_label(form, null, {label_attr: {class: "control-label"}}) }}
+
+            {% set widgetClass = ((("choice" in block_prefixes) and expanded) or ("file" in block_prefixes)) ? [] : {attr: {class: attr.class|default("") ~ " form-control"}} %}
+            {{ form_widget(form, widgetClass) }}
+
+            {% if help is defined and help is not empty %}
+            <div class="help-block">{{ help }}</div>
+            {% endif %}
+
+            {% if errors is not empty %}
+                <div class="help-block">{{ form_errors(form) }}</div>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock regular_form_row %}
+
+
+{% block checkbox_form_row %}
+    {% spaceless %}
+        <div class="form-group{% if errors is not empty %} has-error{% endif %}">
+            <label class="checkbox-inline{% if required %} required{% endif %}">
+                {{ form_widget(form) }}
+                {{ label|trans({}, translation_domain) }}
+            </label>
+
+            {% if help is defined and help is not empty %}
+                <div class="help-block">{{ help }}</div>
+            {% endif %}
+
+            {% if errors is not empty %}
+                <div class="help-block">{{ form_errors(form) }}</div>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock checkbox_form_row %}
+
+{% block choice_widget_expanded %}
+    {% spaceless %}
+        <div {{ block('widget_container_attributes') }}>
+            {% if form.count <= 3 %}
+                {# inline checkboxes #}
+                {% for child in form %}
+                    <label class="radio-inline">
+                        {{ form_widget(child) }}
+                        {{ label|trans({}, translation_domain) }}
+                    </label>
+                {% endfor %}
+            {% else %}
+                {% for child in form %}
+                    <div class="radio">
+                        <label>
+                            {{ form_widget(child) }}
+                            {{ label|trans({}, translation_domain) }}
+                        </label>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+
+{% block button_row %}
+    {% spaceless %}
+        <div class="form-group">
+            {{ form_widget(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock button_row %}
+
+{% block button_widget %}
+    {% spaceless %}
+        {% set useType = type|default('button') %}
+        {% set prevClass = attr.class is defined ? attr.class : "" %}
+
+        {# set button classes #}
+        {% if useType == "submit" %}
+            {% set attr = attr|merge({class: "#{prevClass} btn btn-primary"}) %}
+        {% else %}
+            {% set attr = attr|merge({class: "#{prevClass} btn"}) %}
+        {% endif %}
+
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <button type="{{ useType }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+    {% endspaceless %}
+{% endblock button_widget %}

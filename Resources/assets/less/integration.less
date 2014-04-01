@@ -1,0 +1,37 @@
+@import "core/bootstrap";
+
+// Class for hiding everything except the top level in the knp menu
+.simple-bootstrap-menu {
+    .menu_level_1 {
+        display: none;
+    }
+}
+
+.table {
+    td, th {
+        &.icon-column {
+            width: 20px;
+            text-align: center;
+        }
+    }
+}
+
+form label.required:after {
+    content: " *";
+}
+
+form {
+    input,
+    select,
+    textarea {
+        &.input-small {
+            max-width: 200px;
+        }
+    }
+}
+
+.navbar.navbar-hover .nav li.dropdown:hover {
+    .dropdown-menu {
+        display: block;
+    }
+}

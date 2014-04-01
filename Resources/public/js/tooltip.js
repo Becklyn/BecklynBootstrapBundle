@@ -1,0 +1,1 @@
+!function(a){"use strict";a("[data-toggle='tooltip']").tooltip()}(jQuery);
