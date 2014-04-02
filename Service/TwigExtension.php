@@ -46,9 +46,9 @@ class TwigExtension extends \Twig_Extension
      */
     public function getTests ()
     {
-        return array(
-            "suffixOf" => new \Twig_Test_Method($this, "suffixOf")
-        );
+        return [
+            new \Twig_SimpleTest("suffixOf", [$this, "suffixOf"])
+        ];
     }
     //endregion
 
@@ -62,17 +62,14 @@ class TwigExtension extends \Twig_Extension
      *
      * @return mixed
      */
-    public function bootstrapFlashList ($flashName)
+    public function bootstrapFlashList ($flashName = "messages")
     {
         /** @var $twig TwigRenderer */
         $twig = $this->container->get("templating");
 
-        return $twig->render(
-            "BecklynBootstrapBundle:_partial:flash_bags.html.twig",
-            array(
-                "flashName" => $flashName
-            )
-        );
+        return $twig->render("@BecklynBootstrap/_partial/flash_bags.html.twig", [
+            "flashName" => $flashName
+        ]);
     }
 
 
@@ -84,9 +81,9 @@ class TwigExtension extends \Twig_Extension
      */
     public function getFunctions ()
     {
-        return array(
-            "bootstrapFlashList" => new \Twig_Function_Method($this, "bootstrapFlashList", array("is_safe" => array("html")))
-        );
+        return [
+            new \Twig_SimpleFunction("bootstrapFlashList", [$this, "bootstrapFlashList"], ["is_safe" => ["html"]])
+        ];
     }
     //endregion
 
