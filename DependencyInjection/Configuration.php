@@ -17,6 +17,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        return new TreeBuilder();
+        $treeBuilder = new TreeBuilder();
+        $treeBuilder->root('becklyn_bootstrap');
+        return $treeBuilder;
     }
 }
