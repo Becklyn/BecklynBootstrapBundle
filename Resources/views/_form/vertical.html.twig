@@ -11,11 +11,15 @@
 
 {% block regular_form_row %}
     {% spaceless %}
-        <div class="form-group{% if errors is not empty %} has-error{% endif %}">
+        <div class="form-group{% if errors is not empty %} has-error has-feedback{% endif %}">
             {{ form_label(form, null, {label_attr: {class: "control-label"}}) }}
 
             {% set widgetClass = ((("choice" in block_prefixes) and expanded) or ("file" in block_prefixes)) ? [] : {attr: {class: attr.class|default("") ~ " form-control"}} %}
             {{ form_widget(form, widgetClass) }}
+
+            {% if errors is not empty %}
+            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            {% endif %}
 
             {% if help is defined and help is not empty %}
             <div class="help-block">{{ help }}</div>
@@ -73,10 +77,14 @@
     {% endspaceless %}
 {% endblock choice_widget_expanded %}
 
-
 {% block button_row %}
     {% spaceless %}
         <div class="form-group">
+            {% if form.parent.vars.cancelUrl is defined and form.parent.vars.cancelUrl is not empty %}
+                <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">Abbrechen</a>
+                &nbsp;
+            {% endif %}
+
             {{ form_widget(form) }}
         </div>
     {% endspaceless %}

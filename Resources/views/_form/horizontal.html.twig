@@ -13,15 +13,19 @@
     {% spaceless %}
         {% set labelSpan = bootstrap.labelSpan|default(3) %}
         {% set inputSpan = bootstrap.inputSpan|default(9) %}
-        <div class="form-group{% if errors is not empty %} has-error{% endif %}">
+        <div class="form-group row{% if errors is not empty %} has-error has-feedback{% endif %}">
             {{ form_label(form, null, {label_attr: {class: "control-label col-lg-#{labelSpan}"}}) }}
 
             <div class="col-lg-{{ inputSpan }}">
                 {% set widgetClass = ((("choice" in block_prefixes) and expanded) or ("file" in block_prefixes)) ? [] : {attr: {class: attr.class|default("") ~ " form-control"}} %}
                 {{ form_widget(form, widgetClass) }}
 
+                {% if errors is not empty %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+
                 {% if help is defined and help is not empty %}
-                <div class="help-block">{{ help }}</div>
+                    <div class="help-block">{{ help }}</div>
                 {% endif %}
 
                 {% if errors is not empty %}
@@ -37,7 +41,7 @@
     {% set labelSpan = bootstrap.labelSpan|default(3) %}
     {% set inputSpan = bootstrap.inputSpan|default(9) %}
     {% spaceless %}
-        <div class="form-group{% if errors is not empty %} has-error{% endif %}">
+        <div class="form-group row{% if errors is not empty %} has-error{% endif %}">
             <div class="col-lg-offset-{{ labelSpan }} col-lg-{{ inputSpan }}">
                 <label class="checkbox-inline{% if required %} required{% endif %}">
                     {{ form_widget(form) }}
@@ -81,13 +85,17 @@
     {% endspaceless %}
 {% endblock choice_widget_expanded %}
 
-
 {% block button_row %}
     {% set labelSpan = bootstrap.labelSpan|default(3) %}
     {% set inputSpan = bootstrap.inputSpan|default(9) %}
     {% spaceless %}
-        <div class="form-group">
+        <div class="form-group row">
             <div class="col-lg-offset-{{ labelSpan }} col-lg-{{ inputSpan }}">
+                {% if form.parent.vars.cancelUrl is defined and form.parent.vars.cancelUrl is not empty %}
+                    <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">Abbrechen</a>
+                    &nbsp;
+                {% endif %}
+
                 {{ form_widget(form) }}
             </div>
         </div>
