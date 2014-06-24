@@ -77,10 +77,14 @@
     {% endspaceless %}
 {% endblock choice_widget_expanded %}
 
-
 {% block button_row %}
     {% spaceless %}
         <div class="form-group">
+            {% if form.parent.vars.cancelUrl is defined and form.parent.vars.cancelUrl is not empty %}
+                <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">Abbrechen</a>
+                &nbsp;
+            {% endif %}
+
             {{ form_widget(form) }}
         </div>
     {% endspaceless %}
