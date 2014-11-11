@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: "Resources/assets/js/integration",
+                    cwd: "Resources/assets/js",
                     src: "**/*.js",
                     dest: "Resources/public/js"
                 }]
