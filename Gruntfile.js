@@ -7,28 +7,6 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         uglify: {
-            core: {
-                options: {
-                    report: "gzip"
-                },
-                files: [{
-                    dest: "Resources/public/js/bootstrap.js",
-                    src: [
-                        "Resources/assets/js/core/transition.js",
-                        "Resources/assets/js/core/alert.js",
-                        "Resources/assets/js/core/button.js",
-                        "Resources/assets/js/core/carousel.js",
-                        "Resources/assets/js/core/collapse.js",
-                        "Resources/assets/js/core/dropdown.js",
-                        "Resources/assets/js/core/modal.js",
-                        "Resources/assets/js/core/tooltip.js",
-                        "Resources/assets/js/core/popover.js",
-                        "Resources/assets/js/core/scrollspy.js",
-                        "Resources/assets/js/core/tab.js",
-                        "Resources/assets/js/core/affix.js"
-                    ]
-                }]
-            },
             integration: {
                 options: {
                     report: "gzip"
