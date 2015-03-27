@@ -1,1 +1,1 @@
-!function(a){"use strict";a("[data-toggle='popover']").popover()}(jQuery);
+!function(o){"use strict";o("[data-toggle='popover']").popover()}(jQuery);
