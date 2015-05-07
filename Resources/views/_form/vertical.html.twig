@@ -81,7 +81,7 @@
     {% spaceless %}
         <div class="form-group">
             {% if form.parent.vars.cancelUrl is defined and form.parent.vars.cancelUrl is not empty %}
-                <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">{{ form.parent.vars.cancelLabel | default('Cancel') }}</a>
+                <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">{{ form.parent.vars.cancelLabel | default('Abbrechen') }}</a>
                 &nbsp;
             {% endif %}
 
