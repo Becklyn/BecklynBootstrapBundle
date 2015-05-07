@@ -10,4 +10,4 @@ Bundled components:
 
 
 
-Bundled Bootstrap-Version: **3.1.1**
+Bundled Bootstrap-Version: **3.3.4**
