@@ -92,7 +92,7 @@
         <div class="form-group row">
             <div class="col-lg-offset-{{ labelSpan }} col-lg-{{ inputSpan }} col-md-offset-{{ labelSpan }} col-md-{{ inputSpan }}">
                 {% if form.parent.vars.cancelUrl is defined and form.parent.vars.cancelUrl is not empty %}
-                    <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">Abbrechen</a>
+                    <a class="btn btn-default" href="{{ form.parent.vars.cancelUrl }}">{{ form.parent.vars.cancelLabel | default('Abbrechen') }}</a>
                     &nbsp;
                 {% endif %}
 
