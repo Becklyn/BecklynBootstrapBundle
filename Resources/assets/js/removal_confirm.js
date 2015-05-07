@@ -58,8 +58,8 @@ jQuery(function($) {
         var title        = $link.data("original-title") || $link.attr("title");
         var url          = $link.attr("href");
         var message      = $link.data("confirm");
-        var confirmLabel = $link.data("confirm-label") || "Continue";
-        var cancelLabel  = $link.data("cancel-label") || "Cancel";
+        var confirmLabel = $link.data("confirm-label") || "Fortfahren";
+        var cancelLabel  = $link.data("cancel-label") || "Abbrechen";
 
         return [
             '<div class="modal fade" id="becklyn-bootstrap-modal" role="dialog">',
