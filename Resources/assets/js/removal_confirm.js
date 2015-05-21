@@ -55,9 +55,11 @@ jQuery(function($) {
 
     function renderModalContent ($link)
     {
-        var title   = $link.data("original-title") || $link.attr("title");
-        var url     = $link.attr("href");
-        var message = $link.data("confirm");
+        var title        = $link.data("original-title") || $link.attr("title");
+        var url          = $link.attr("href");
+        var message      = $link.data("confirm");
+        var confirmLabel = $link.data("confirm-label") || "Fortfahren";
+        var cancelLabel  = $link.data("cancel-label") || "Abbrechen";
 
         return [
             '<div class="modal fade" id="becklyn-bootstrap-modal" role="dialog">',
@@ -71,8 +73,8 @@ jQuery(function($) {
                             '<p>', escapeHtml(message), '</p>',
                         '</div>',
                         '<div class="modal-footer">',
-                            '<button class="btn btn-default" data-dismiss="modal">Abbrechen</button>',
-                            '<a href="', url, '" class="btn btn-danger">Fortfahren</a>',
+                            '<button class="btn btn-default" data-dismiss="modal">', cancelLabel ,'</button>',
+                            '<a href="', url, '" class="btn btn-danger">', confirmLabel ,'</a>',
                         '</div>',
                     '</div>',
                 '</div>',
