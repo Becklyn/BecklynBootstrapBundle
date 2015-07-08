@@ -6,5 +6,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class BecklynBootstrapBundle extends Bundle
 {
-    const VERSION = '3.3.4';
+    const VERSION = '3.3.5';
 }
