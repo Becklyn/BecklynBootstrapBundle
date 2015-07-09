@@ -1,18 +1,9 @@
-{% spaceless %}
-    {% for flash in app.session.flashbag.get(flashName) %}
-        {# flash type mapping for deprecated types #}
-        {%- set type = (flash.type == "error") ? "danger" : flash.type %}
-        <div class="alert {{ "alert-#{type}" }}{% if flash.message|length > 50 %} alert-block{% endif %}">
+{%- for type, messages in app.session.flashbag.all -%}
+    {%- set type = ("error" == type) ? "danger" : type -%}
+    {%- for message in messages -%}
+        <div class="alert {{ "alert-#{type}" }}">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {% if flash.title is not empty %}
-                {% if flash.message|length > 50 %}
-                    <h4>{{ flash.title }}</h4>
-                {% else %}
-                    <strong>{{ flash.title }}</strong>
-                {% endif %}
-            {% endif %}
-
-            {{ flash.message }}
+            {{- message -}}
         </div>
-    {% endfor %}
-{% endspaceless %}
+    {%- endfor -%}
+{%- endfor -%}
