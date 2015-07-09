@@ -68,7 +68,7 @@
                 {% for child in form %}
                     <label class="radio-inline">
                         {{ form_widget(child) }}
-                        {{ label|trans({}, translation_domain) }}
+                        {{ child.vars.label|trans({}, translation_domain) }}
                     </label>
                 {% endfor %}
             {% else %}
@@ -76,7 +76,7 @@
                     <div class="radio">
                         <label>
                             {{ form_widget(child) }}
-                            {{ label|trans({}, translation_domain) }}
+                            {{ child.vars.label|trans({}, translation_domain) }}
                         </label>
                     </div>
                 {% endfor %}
