@@ -2,6 +2,6 @@ services:
 
     twig.extension.becklyn.bootstrap:
         class: Becklyn\BootstrapBundle\Service\TwigExtension
-        arguments: [@service_container]
+        arguments: ["@service_container"]
         tags:
             - { name: twig.extension }
