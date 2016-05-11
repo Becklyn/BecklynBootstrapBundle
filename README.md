@@ -1,3 +1,9 @@
+DEPRECATION NOTICE
+------------------
+
+**This bundle is deprecated. Just load the assets yourself or require them via your frontend bundler of choice.**
+
+
 BecklynBootstrapBundle
 ======================
 
