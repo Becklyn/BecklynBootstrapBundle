@@ -13,7 +13,7 @@
     ],
     "require":      {
         "php": ">=7.0",
-        "symfony/framework-bundle": "^2.4 || ^v3.0"
+        "symfony/framework-bundle": "^v3.0 || ^v4.4 || ^v5.0"
     },
     "autoload":     {
         "psr-4": { "Becklyn\\BootstrapBundle\\": "" }
